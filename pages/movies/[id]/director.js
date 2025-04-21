@@ -6,11 +6,13 @@ import styles from '@/styles/Director.module.css';
 import { getMovies, getMovie, getDirector } from '../../../data';
 
 const fetcher = (movieId) => {
+  
   const currentMovie = getMovie(movieId);                 //CSR using SWR
   const director = getDirector(currentMovie.directorId);
   const directorsMovies = getMovies().filter(
     movie => movie.directorId === currentMovie.directorId
   );
+  
   return {
     currentMovieTitle: currentMovie.title,
     director,
@@ -23,6 +25,10 @@ export default function DirectorPage() {
   const { id } = router.query;
   
   const { data, error, isLoading } = useSWR(id, fetcher);
+
+  if (isLoading) return <div className={styles.loading}>Loading...</div>;
+  if (error) return <div className={styles.error}>{error.message}</div>;
+  if (!data) return <div className={styles.error}>No data found</div>;
 
   const { currentMovieTitle, director, directorsMovies } = data;
 
