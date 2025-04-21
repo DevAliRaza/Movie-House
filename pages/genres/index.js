@@ -32,37 +32,21 @@ export default function GenresPage({ genres }) {
   );
 }
 
-
-// export async function getStaticProps() {
-//     const genres = getGenres();
-//     const movies = getMovies();
-//     const movieCount = movies.filter(movie => movie.genreId === genre.id).length
-//     // Count movies per genre
-//     const genresWithCounts = genres.map(genre => ({
-//       ...genre,
-//       movieCount: movieCount
-//     }));
-  
-//     return {
-//       props: {
-//         genres: genresWithCounts
-//       },
-//     };
-//   }
-  
-  export async function getServerSideProps(){
-    const genres = getGenres();
-    const movies = getMovies();
-    const movieCount = movies.filter(movie => movie.genreId === genre.id).length
-    // Count movies per genre
-    const genresWithCounts = genres.map(genre => ({
-      ...genre,
-      movieCount: movieCount
-    }));
-  
+export async function getServerSideProps() {
+  const genres = getGenres();
+  const movies = getMovies();
+  const genresWithCounts = genres.map(genre => {
+    const movieCount = movies.filter(movie => movie.genreId === genre.id).length;
     return {
-      props: {
-        genres: genresWithCounts
-      },
+        id: genre.id,
+        name: genre.name,
+        movieCount
     };
-  }
+  });
+
+  return {
+    props: {
+      genres: genresWithCounts
+    }
+  };
+}
