@@ -1,0 +1,180 @@
+/* Home.module.css */
+
+.main {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #0f1016;
+  min-height: 100vh;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #ff4d94, #ff8a00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.browseButton {
+  background: linear-gradient(to right, #ff4d94, #ff8a00);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 77, 148, 0.2);
+  display: block;
+}
+
+.browseButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 77, 148, 0.4);
+}
+
+.browseButton:active {
+  transform: translateY(-1px);
+}
+
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.movieCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.movieCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(to bottom right, rgba(255, 77, 148, 0.5), rgba(255, 138, 0, 0.5));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movieCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.movieCard:hover::after {
+  opacity: 1;
+}
+
+.movieCard h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.movieCard p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.movieCard p:first-of-type {
+  color: #ffca39;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.movieCard p:last-of-type {
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem;
+  }
+  
+  .movieGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 1rem;
+  }
+  
+  .movieGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .browseButton {
+    width: 100%;
+  }
+  
+  .main h1 {
+    font-size: 2rem;
+  }
+  
+  .movieCard {
+    padding: 1.2rem;
+  }
+}
+
+/* Ensure smooth scrolling on the page */
+
+
+/* Add a subtle pulsing animation to the star ratings */
+.movieCard p:first-of-type {
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Add hover reveal effect */
+.movieCard h2, .movieCard p {
+  transition: transform 0.3s ease;
+}
+
+.movieCard:hover h2 {
+  transform: translateY(-3px);
+}
+
+.movieCard:hover p {
+  transform: translateY(-2px);
+}
