@@ -10,6 +10,7 @@ export default function MoviesPage({ movies, allGenres }) {
   const filteredMovies = movies.filter(movie => 
     selectedGenre === 'all' || movie.genre?.id === selectedGenre
   );
+
   return (
     <>
       <Head>
@@ -42,7 +43,7 @@ export default function MoviesPage({ movies, allGenres }) {
                   <h2>{movie.title}</h2>
                   <p>{movie.rating}</p>
                   <p>{movie.releaseYear}</p>
-                  <p>{movie.genre.name}</p>
+                  <p>{movie.genre?.name || 'Unknown Genre'}</p>
                 </div>
               </Link>
             </div>
@@ -54,11 +55,17 @@ export default function MoviesPage({ movies, allGenres }) {
 }
 
 export async function getStaticProps() {
-  const movies = getMovies().map(movie => ({
-    ...movie,
-    genre: getGenre(movie.genreId),
-    director: getDirector(movie.directorId)
-  }));
+  const rawMovies = getMovies();
+    const movies = rawMovies.map(movie => {
+    const genre = getGenre(movie.genreId);
+    const director = getDirector(movie.directorId);
+    
+    return {
+      ...movie,
+      genre,
+      director
+    };
+  }).filter(movie => movie.genre); 
 
   return {
     props: {
