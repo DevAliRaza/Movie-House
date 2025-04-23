@@ -22,7 +22,7 @@ export default function GenresPage({ genres }) {
             >
               <div>
                 <h2>{genre.name}</h2>
-                <p>{genre.movieCount} {genre.movieCount === 1 ? 'movie' : 'movies'}</p>
+                <p>{genre.movieCount} movies</p>
               </div>
             </Link>
           ))}

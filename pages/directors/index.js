@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import useSWR from 'swr';
 import styles from '@/styles/Directors.module.css';
-
 import { getDirectors , getMovies } from '../../data';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
