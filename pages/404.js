@@ -11,10 +11,7 @@ export default function Custom404() {
       <main className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>404</h1>
-          <h2 className={styles.subtitle}>Oops! Page not found</h2>
-          <p className={styles.message}>
-            The page you're looking for doesn't exist or has been moved.
-          </p>
+          <h2 className={styles.subtitle}>Page not found</h2>
           <div className={styles.actions}>
             <Link href="/" className={styles.homeButton}>
               Go to Homepage

@@ -41,7 +41,7 @@ export default function DirectorPage() {
   return (
     <>
       <Head>
-        <title>{currentMovieTitle} - Director</title>
+        <title>{currentMovieTitle}</title>
       </Head>
       
       <main className={styles.main}>
@@ -55,7 +55,7 @@ export default function DirectorPage() {
             {directorsMovies.map(movie => (
               <li key={movie.id}>
                 <Link href={`/movies/${movie.id}`} className={styles.movieLink}>
-                  {movie.title} ({movie.releaseYear})
+                  {movie.title} {movie.releaseYear}
                 </Link>
               </li>
             ))}
