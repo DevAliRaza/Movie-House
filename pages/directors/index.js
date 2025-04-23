@@ -39,14 +39,14 @@ export default function DirectorsPage() {
         <div className={styles.directorGrid}>
           {directors?.map(director => (
             <div key={director.id} className={styles.directorCard}>
-              <Link href={`/directors/${director.id}`}>
+              
                 <div className={styles.cardContent}>
                   <h2 className={styles.directorName}>{director.name}</h2>
                   <p className={styles.bioPreview}>
                     {director.biography}
                   </p>
                 </div>
-              </Link>
+             
             </div>
           ))}
         </div>
