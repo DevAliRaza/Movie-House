@@ -22,6 +22,9 @@ export default function Home() {
         <button onClick={() => router.push('/movies')} className={styles.browseButton}>
           All Movies
            </button>
+           <button onClick={() => router.push('/directors')} className={styles.browseButton}>
+          All Directors
+           </button>
 
         <div className={styles.movieGrid}>
           {movies.map((movie) => (
