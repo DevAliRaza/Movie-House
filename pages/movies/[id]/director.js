@@ -7,7 +7,7 @@ import { getMovies, getMovie, getDirector } from '../../../data';
 
 const fetcher = (movieId) => {
   
-  const currentMovie = getMovie(movieId);                 //CSR using SWR
+  const currentMovie = getMovie(movieId);                 //CSR using SWR passing the id of the movie director accordingly
   const director = getDirector(currentMovie.directorId);
   const directorsMovies = getMovies().filter(
     movie => movie.directorId === currentMovie.directorId
@@ -49,9 +49,10 @@ export default function DirectorPage() {
           <h1>Director of {currentMovieTitle}</h1>
           <h2>{director.name}</h2>
           <p><strong>Biography:</strong> {director.biography}</p>
-          
+    
           <h3>All Movies Directed:</h3>
           <ul className={styles.moviesList}>
+
             {directorsMovies.map(movie => (
               <li key={movie.id}>
                 <Link href={`/movies/${movie.id}`} className={styles.movieLink}>
