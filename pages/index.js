@@ -5,7 +5,8 @@ import { getMovies } from '../data.js';
 
 export default function Home() {
   const router = useRouter();
-  const movies = getMovies().sort((a, b) => b.rating - a.rating).slice(0,3);
+  const movies = getMovies().sort((a, b) => b.rating - a.rating)
+  .slice(0,3);
 
   return (
     <>
