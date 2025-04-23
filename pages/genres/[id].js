@@ -54,12 +54,12 @@ export async function getStaticPaths() {
         ...movie,
         director: getDirector(movie.directorId)
       }));
-  
+    const allGenres = getGenres()
     return {
       props: {
         genre,
         movies,
-        allGenres: getGenres()
+        allGenres
       }
     };
   }

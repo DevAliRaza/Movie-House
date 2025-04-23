@@ -14,9 +14,7 @@ export default function MovieDetails({ movie, director, genre }) {
       </Head>
       
       <main className={styles.main}>
-        <button onClick={() => router.back()} className={styles.backButton}>
-          Back to Trending
-        </button>
+        
         
         <div className={styles.movieDetails}>
           <h1>{movie.title}</h1>

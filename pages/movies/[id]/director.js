@@ -26,10 +26,16 @@ export default function DirectorPage() {
   
   const { data, error, isLoading } = useSWR(id, fetcher);
 
-  if (isLoading) return <div className={styles.loading}>Loading...</div>;
-  if (error) return <div className={styles.error}>{error.message}</div>;
-  if (!data) return <div className={styles.error}>No data found</div>;
+  if (isLoading){
+    return <div className={styles.loading}>Loading...</div>
+  } 
+  if (error){
+    return <div className={styles.error}>{error.message}</div>
+} 
+  if (!data){
+    return <div className={styles.error}>No data found</div>
 
+  } 
   const { currentMovieTitle, director, directorsMovies } = data;
 
   return (

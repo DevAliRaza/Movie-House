@@ -66,11 +66,11 @@ export async function getStaticProps() {
       director
     };
   }).filter(movie => movie.genre); 
-
+  const allGenres = getGenres();
   return {
     props: {
       movies,
-      allGenres: getGenres()
+      allGenres
     },
     revalidate: 60
   };
