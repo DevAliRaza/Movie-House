@@ -1,0 +1,30 @@
+.layout {
+    position: relative;
+  }
+  
+  /* The fixed button itself */
+  .themeToggle {
+    position: fixed;      /* ⬅️ keeps it on‑screen page‑to‑page */
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid currentColor;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Color swap driven by the <body> class set in ThemeProvider */
+  body.dark .themeToggle {
+    color: #fff;
+    border-color: #fff;
+  }
+  
+  body.light .themeToggle {
+    color: #000;
+    border-color: #000;
+  }
+  

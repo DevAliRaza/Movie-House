@@ -103,27 +103,105 @@ const data = {
       }
     ]
   }
-  export function getMovies() { return data.movies; }
 
-  // Get a movie by ID (string match since your IDs are strings)
-  export function getMovie(id) { 
-    return data.movies.find(movie => movie.id === id); 
+
+  function getApiBaseUrl() {
+    return 'http://localhost:3000';
   }
-  
-  // Get all genres
-  export function getGenres() { return data.genres; }
-  
-  // Get a genre by ID
-  export function getGenre(id) { 
-    return data.genres.find(genre => genre.id === id); 
+
+
+  // export function getMovies() { return data.movies; }
+
+  export async function getMovies() {
+    const apiUrl = `${getApiBaseUrl()}/api/movies`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error('Failed to fetch movies:', response.status);
+      return [];
+    }
+    const movies = await response.json();
+    return movies;
   }
+
+  // export function getMovie(id) { 
+  //   return data.movies.find(movie => movie.id === id); 
+  // }
   
-  // Get all directors
-  export function getDirectors() { return data.directors; }
-  
-  // Get a director by ID
-  export function getDirector(id) { 
-    return data.directors.find(director => director.id === id); 
+  export async function getMovie(id) {
+    const apiUrl = `${getApiBaseUrl()}/api/movies/${id}`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error(`Failed to fetch movie with ID ${id}:`, response.status);
+      return null;
+    }
+    
+    const movie = await response.json();
+    console.log(movie)
+    return movie;
   }
+
+
+  // export function getGenres() { return data.genres; }
   
+  export async function getGenres() {
+    const apiUrl = `${getApiBaseUrl()}/api/genres`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error('Failed to fetch genres:', response.status);
+      return [];
+    }
+    const genres = await response.json();
+    return genres;
+  }
+
+  // export function getGenre(id) { 
+  //   return data.genres.find(genre => genre.id === id); 
+  // }
+  export async function getGenre(id) {
+    const apiUrl = `${getApiBaseUrl()}/api/genres/${id}`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error(`Failed to fetch genre with ID ${id}:`, response.status);
+      return null;
+    }
+    
+    const genre = await response.json();
+    console.log(genre)
+    return genre;
+  }
+
+
+  // export function getDirectors() { return data.directors; }
+  
+  export async function getDirectors() {
+    const apiUrl = `${getApiBaseUrl()}/api/directors`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error('Failed to fetch directors:', response.status);
+      return [];
+    }
+    const directors = await response.json();
+    return directors;
+  }
+
+
+  // export function getDirector(id) { 
+  //   return data.directors.find(director => director.id === id); 
+  // }
+  
+  export async function getDirector(id) {
+    const apiUrl = `${getApiBaseUrl()}/api/directors/${id}`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error(`Failed to director genre with ID ${id}:`, response.status);
+      return null;
+    }
+    
+    const director = await response.json();
+    console.log(director)
+    return director;
+  }
+
+
+
   export default data;
