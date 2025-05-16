@@ -1,5 +1,6 @@
 // pages/api/genres/[id].js
 import { MongoClient } from 'mongodb';
+import connectMongo from '@/lib/mongodb';
 
 export default async function handler(req, res) {
   const { id } = req.query;
@@ -8,7 +9,7 @@ export default async function handler(req, res) {
   const dbName = 'ass2';
 
   try {
-    const client = await MongoClient.connect(process.env.MONGO_URI);
+    const client = await connectMongo();
     const db = client.db(dbName);
     const genre = await db.collection('genres').findOne({ id: id });
     

@@ -1,13 +1,13 @@
 // pages/api/directors/[id].js
+import connectMongo from '@/lib/mongodb';
 import { MongoClient } from 'mongodb';
-
 export default async function handler(req, res) {
   const { id } = req.query;
   const uri = process.env.MONGODB_URI;
   const dbName = 'ass2';
 
   try {
-    const client = await MongoClient.connect(process.env.MONGO_URI);
+    const client = await connectMongo();
     const db = client.db(dbName);
     const director = await db.collection('directors').findOne({ id: id });
     

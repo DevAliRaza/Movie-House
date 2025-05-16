@@ -6,7 +6,6 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
 
-  // Check localStorage for saved preference on initial load
   useEffect(() => {
     const savedTheme = localStorage.getItem('darkMode');
     if (savedTheme !== null) {
@@ -21,7 +20,6 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-    // Save preference to localStorage
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
